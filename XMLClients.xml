@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Clients>
+
+	<Client ID = "1">
+
+		<FirstName>Petar</FirstName>
+		<LastName>Shatanovski</LastName>
+		<Addresses>
+
+			<Address Type="1">
+
+				<Street>Street 1</Street>
+
+				<City>City 1</City>
+
+				<Country> Country 1</Country>
+
+			</Address>
+
+			<Address Type="2">
+
+				<Street>Street 2</Street>
+
+				<City>City 2</City>
+
+				<Country> Country 2</Country>
+
+			</Address>
+		</Addresses>
+
+		<BirthDate>01.09.2001</BirthDate>
+
+	</Client>
+
+	<Client ID ="2">
+
+		<FirstName>Test</FirstName>
+		<LastName>Testovski</LastName>
+
+		<Addresses>
+
+			<Address Type="2">
+
+				<Street>Street 3</Street>
+
+				<City>City 3</City>
+
+				<Country> Country 3</Country>
+
+			</Address>
+
+			<Address Type="2">
+
+				<Street>Street 4</Street>
+
+				<City>City 2</City>
+
+				<Country> Country 2</Country>
+
+			</Address>
+		</Addresses>
+
+		<BirthDate>01.09.2003</BirthDate>
+
+	</Client>
+</Clients>

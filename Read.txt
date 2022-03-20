@@ -1,0 +1,35 @@
+﻿
+
+1. Enable-Migrations -ContextTypeName ClientDB
+2. add-migration InitialDb
+3.update-database -Verbose
+
+Target database is: 'ClientsPetarDb' (DataSource: (LocalDB)\MSSQLLocalDB, Provider: System.Data.SqlClient, Origin: Configuration).
+Applying explicit migrations: [202203191540307_InitialDb].
+Applying explicit migration: 202203191540307_InitialDb.
+CREATE TABLE [dbo].[Addresses] (
+    [Id] [int] NOT NULL IDENTITY,
+    [Street] [nvarchar](max),
+    [City] [nvarchar](max),
+    [Country] [nvarchar](max),
+    [AddressType] [int] NOT NULL,
+    [Client_Id] [int],
+    CONSTRAINT [PK_dbo.Addresses] PRIMARY KEY ([Id])
+)
+CREATE INDEX [IX_Client_Id] ON [dbo].[Addresses]([Client_Id])
+CREATE TABLE [dbo].[Clients] (
+    [Id] [int] NOT NULL IDENTITY,
+    [FirstName] [nvarchar](max),
+    [LastName] [nvarchar](max),
+    [BirthDate] [datetime] NOT NULL,
+    [Created] [datetime] NOT NULL,
+    CONSTRAINT [PK_dbo.Clients] PRIMARY KEY ([Id])
+)
+ALTER TABLE [dbo].[Addresses] ADD CONSTRAINT [FK_dbo.Addresses_dbo.Clients_Client_Id] FOREIGN KEY ([Client_Id]) REFERENCES [dbo].[Clients] ([Id])
+CREATE TABLE [dbo].[__MigrationHistory] (
+    [MigrationId] [nvarchar](150) NOT NULL,
+    [ContextKey] [nvarchar](300) NOT NULL,
+    [Model] [varbinary](max) NOT NULL,
+    [ProductVersion] [nvarchar](32) NOT NULL,
+    CONSTRAINT [PK_dbo.__MigrationHistory] PRIMARY KEY ([MigrationId], [ContextKey])
+)

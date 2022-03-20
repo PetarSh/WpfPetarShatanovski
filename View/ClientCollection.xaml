@@ -1,0 +1,72 @@
+﻿<UserControl x:Class="WpfPetarShatanovski.View.ClientCollection"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             
+             xmlns:local="clr-namespace:WpfPetarShatanovski.View"
+             xmlns:System="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d" 
+             xmlns:Infrastructure="clr-namespace:WpfPetarShatanovski.Infrastructure" 
+             xmlns:viewmodel="clr-namespace:WpfPetarShatanovski.ViewModel" 
+             d:DataContext="{d:DesignInstance Type=viewmodel:MainWindowViewModel}"
+             d:DesignHeight="900" d:DesignWidth="800">
+    <UserControl.Resources>
+
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="99*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.ColumnSpan="2" Margin="0,0,0,117" Grid.RowSpan="2">
+            <TextBox Text="CLIENT MANAGEMENT APP" FontSize="16" Margin="360,3,230,3" Width="Auto"></TextBox>
+        </Grid>
+        <DataGrid Grid.Row="1" ItemsSource="{Binding ClientCollection}" 
+                  SelectedItem="{Binding SelectedClient,Mode=TwoWay}" Margin="0,21,0,9.667" Grid.ColumnSpan="2">
+
+        </DataGrid>
+
+        <Grid Grid.Row="2" DataContext="{Binding SelectedClient}" Margin="0,0,0,0.667" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="First Name" Margin="3,4,65.333,1.667"></TextBlock>
+            <TextBlock Grid.Row="0" Grid.Column="1" Text="Last Name"></TextBlock>
+            <TextBlock Grid.Row="0" Grid.Column="1" Text="Birth Date" Margin="197.667,1,-10.667,4.667" Grid.ColumnSpan="3"></TextBlock>
+
+
+
+            <TextBox  x:Name="FirstName" Grid.Row="1"  Grid.Column="0"  Text="{Binding FirstName,  UpdateSourceTrigger=PropertyChanged}"  Margin="3,0.333,21.333,23.667"/>
+            <TextBox x:Name="LastName" Grid.Row="1" Grid.Column="1" Text="{Binding LastName}" Margin="0,2.333,10.333,21.667" Width="Auto" Grid.ColumnSpan="2"></TextBox>
+            <DatePicker Name="BirthDate" Grid.Row="1" Grid.Column="1" Text="{Binding BirthDate}" Margin="197.667,2.333,-59.667,21.667" Grid.ColumnSpan="3"/>
+
+
+
+        </Grid>
+        <Grid DataContext="{Binding SelectedAddress}" Grid.ColumnSpan="2" Margin="0,0,0,117" Grid.RowSpan="2"/>
+        <StackPanel Grid.Row="2" Margin="0,250,242,249.667"  Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Command="{Binding Xml}" Content="Add From XML"/>
+            <Button Command="{Binding GetWorldClock}" Content="WorldClock"/>
+            <Button Command="{Binding Add}" Content="Add New" />
+            <Button Command="{Binding Save}" Content="Update"/>
+            <Button Command="{Binding Delete}" Content="Delete"/>
+        </StackPanel>
+        <TextBox Grid.ColumnSpan="2" Margin="0,0,0,117" Grid.RowSpan="2"></TextBox>
+    </Grid>
+</UserControl>
+
