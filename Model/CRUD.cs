@@ -43,6 +43,7 @@ namespace WpfPetarShatanovski.Model
                 selected.BirthDate = updatedClient.BirthDate;
                 selected.Created = DateTime.UtcNow;
                 _dbContext.SaveChanges();
+                //return selected;
             }
             else
             {
@@ -57,12 +58,25 @@ namespace WpfPetarShatanovski.Model
 
                 Client insertedCl= _dbContext.Clients.First(p => p.Id == newC.Id);
 
-                Address adr = new Address();
-                
-                
+                foreach(var address in insertedCl.Addresses)
+                {
+                    Address adr = new Address();
+                    adr.City = address.City;
+                    adr.Country = address.Country;
+                    adr.Street = address.Street;
+                    adr.ClientId = insertedCl.Id;
+                    adr.Client = insertedCl;
+                    _dbContext.Addresses.Add(adr);
+                    _dbContext.SaveChanges();
+                }
+
+               
+                //return insertedCl;
+
+
             }
             _dbContext.SaveChanges();
-
+           
         }
 
         private void CheckValidations(Client client)

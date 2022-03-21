@@ -43,6 +43,7 @@ namespace WpfPetarShatanovski.ViewModel
         }
         private ObservableCollection<Client> clientCollection;
         private ObservableCollection<Address> addresses;
+        private IList<Address> formAddress;
         public ObservableCollection<Client> ClientCollection
             {
                 get { return clientCollection; }
@@ -156,12 +157,16 @@ namespace WpfPetarShatanovski.ViewModel
                 c.LastName = _LastName;
                 c.BirthDate = _BirthDate;
                 c.Created = DateTime.UtcNow;
+
+                //c.Addresses=_str
+
                 _business.Update(c);
                 ClientCollection = new ObservableCollection<Client>(_business.Get());
                 ShowMessageBox(this, new MessageEventArgs()
                 {
                     Message = "Saved."
                 });
+
 
             }
             catch (Exception ex)

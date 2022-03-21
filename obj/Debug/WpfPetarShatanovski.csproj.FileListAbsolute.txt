@@ -22,3 +22,4 @@ C:\Users\petar\source\repos\WpfPetarShatanovski\obj\Debug\WpfPetarShatanovski.cs
 C:\Users\petar\source\repos\WpfPetarShatanovski\obj\Debug\WpfPetarShatanovski.exe
 C:\Users\petar\source\repos\WpfPetarShatanovski\obj\Debug\WpfPetarShatanovski.pdb
 C:\Users\petar\source\repos\WpfPetarShatanovski\obj\Debug\WpfPetarShatanovski.Migrations.InitialDb.resources
+C:\Users\petar\source\repos\WpfPetarShatanovski\obj\Debug\WpfPetarShatanovski.csproj.AssemblyReference.cache
