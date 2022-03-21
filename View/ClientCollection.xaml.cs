@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System;
 using System.Windows.Controls;
+using WpfPetarShatanovski.ViewModel;
 
 namespace WpfPetarShatanovski.View
 {
@@ -12,6 +13,7 @@ namespace WpfPetarShatanovski.View
         public ClientCollection()
         {
             InitializeComponent();
+            
         }
         private void TextBox_SelectionChanged(object sender, RoutedEventArgs e)
         {

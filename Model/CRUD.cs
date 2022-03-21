@@ -58,7 +58,7 @@ namespace WpfPetarShatanovski.Model
 
                 Client insertedCl= _dbContext.Clients.First(p => p.Id == newC.Id);
 
-                foreach(var address in insertedCl.Addresses)
+                foreach(var address in updatedClient.Addresses)
                 {
                     Address adr = new Address();
                     adr.City = address.City;

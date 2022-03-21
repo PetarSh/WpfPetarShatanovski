@@ -27,10 +27,16 @@ namespace WpfPetarShatanovski.ViewModel
         private string _LastName;
         private DateTime _BirthDate;
 
+        private string _street;
+        private string _country;
+        private string _city;
+        private string _addressType;
+
+
         public MainWindowViewModel()
         {
             _business = new CRUD();
-            //ObservableCollection<ClientData> clientdata = new ObservableCollection<ClientData>();
+       
             ClientCollection = new ObservableCollection<Client>(_business.Get());
             AddressesCollection = new ObservableCollection<Address>(_business.GetAddresses());
         }
@@ -43,7 +49,7 @@ namespace WpfPetarShatanovski.ViewModel
         }
         private ObservableCollection<Client> clientCollection;
         private ObservableCollection<Address> addresses;
-        private IList<Address> formAddress;
+
         public ObservableCollection<Client> ClientCollection
             {
                 get { return clientCollection; }
@@ -82,31 +88,11 @@ namespace WpfPetarShatanovski.ViewModel
             set
             {
                 _address = value;
-                OnProprtyChanged();
+                NotifyPropertyChanged(nameof(SelectedAddress));
             }
         }
 
-        public RelayCommand AddAddress
-        {
-            get
-            {
-                return new RelayCommand(AddAddressNew, true);
-            }
-        }
-        private void AddAddressNew()
-        {
-            try
-            {
-                SelectedAddress = new Address();
-            }
-            catch (Exception ex)
-            {
-                ShowMessageBox(this, new MessageEventArgs()
-                {
-                    Message = ex.Message
-                });
-            }
-        }
+        
 
         public RelayCommand Add
         {
@@ -145,6 +131,46 @@ namespace WpfPetarShatanovski.ViewModel
             }
         }
 
+        /// <summary>
+        /// bind addresses fields
+        /// </summary>
+        public string Street
+        {
+            get { return _street; }
+            set
+            {
+                _street = value;
+                NotifyPropertyChanged(nameof(Street));
+            }
+        }
+        public string City
+        {
+            get { return _city; }
+            set
+            {
+                _city = value;
+                NotifyPropertyChanged(nameof(City));
+            }
+        }
+
+        public string Country
+        {
+            get { return _country; }
+            set
+            {
+                _country = value;
+                NotifyPropertyChanged(nameof(Country));
+            }
+        }
+        public string AddressType
+        {
+            get { return _addressType; }
+            set
+            {
+                _addressType = value;
+                NotifyPropertyChanged(nameof(AddressType));
+            }
+        }
 
         private void AddClient()
         {
@@ -157,8 +183,9 @@ namespace WpfPetarShatanovski.ViewModel
                 c.LastName = _LastName;
                 c.BirthDate = _BirthDate;
                 c.Created = DateTime.UtcNow;
-
-                //c.Addresses=_str
+                IList<Address> a  = new List<Address>();
+                a.Add(SelectedAddress);
+                c.Addresses = a;
 
                 _business.Update(c);
                 ClientCollection = new ObservableCollection<Client>(_business.Get());

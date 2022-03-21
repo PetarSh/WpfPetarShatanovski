@@ -7,10 +7,9 @@
         xmlns:vm="clr-namespace:WpfPetarShatanovski.ViewModel"
         xmlns:View="clr-namespace:WpfPetarShatanovski.View" 
         mc:Ignorable="d"
-        Title="CLIENTS MANAGEMENT PETAR" Height="450" Width="800">
+        Title="CLIENTS MANAGEMENT PETAR" Height="950" Width="800">
     <Window.DataContext>
         <vm:MainWindowViewModel>
-            
         </vm:MainWindowViewModel>
     </Window.DataContext>
     <Grid>

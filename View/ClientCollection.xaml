@@ -30,7 +30,7 @@
         </DataGrid>
 
 
-        <Grid Grid.Row="2"  Margin="0,0,0,0.667" Grid.ColumnSpan="2">
+        <Grid Grid.Row="2"  Margin="0,0.333,0,290" Grid.ColumnSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
@@ -49,18 +49,23 @@
             <TextBox x:Name="LastNameNew" Grid.Row="1" Grid.Column="1" Text="{Binding LastName,  Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Margin="0,2.333,10.333,21.667" Width="Auto" Grid.ColumnSpan="2"></TextBox>
             <DatePicker Name="BirthDateNew" Grid.Row="1" Grid.Column="1" Text="{Binding BirthDate,  Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Margin="197.667,2.333,-59.667,21.667" Grid.ColumnSpan="3" SelectedDate="2001-01-01"/>
 
-            <TextBlock Text="Choose addresses" Grid.ColumnSpan="2" Margin="3,78.333,124.333,-51.333" Grid.Row="1"></TextBlock>
-            <ListBox Name="lstBox" Grid.ColumnSpan="3" Margin="3,101.333,6.667,-74.333" Grid.Row="1">
+            <TextBlock Text="Choose addresses" Grid.ColumnSpan="2" Margin="3,49.333,124,-22.333" Grid.Row="1"></TextBlock>
+
+            <ListBox x:Name="listboxAddress" HorizontalAlignment="Center" Height="Auto" Margin="1,72.333,-59.333,-89.333" VerticalAlignment="Top" Width="461"
+                    SelectedItem="{Binding SelectedAddress,Mode=TwoWay}" ItemsSource="{Binding AddressesCollection,Mode=TwoWay}" SelectionMode="Multiple" Grid.Row="1">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" >
-                            <TextBlock Text="{Binding id}" FontWeight="Bold"/>
-                            <TextBlock Text="{Binding country}" Margin="2" />
-                            <TextBlock Text="{Binding ondate}" Margin="2"/>
-                        </StackPanel>
+                        <Grid>
+                            <TextBlock Grid.Column="1" Text="{Binding Street}"/>
+                            <TextBlock Grid.Column="2" Text="{Binding City}"/>
+                            <TextBlock Grid.Column="3" Text="{Binding Country}"/>
+                            <TextBlock Grid.Column="4" Text="{Binding AddressType}"/>
+
+                        </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
+
         </Grid>
 
 
