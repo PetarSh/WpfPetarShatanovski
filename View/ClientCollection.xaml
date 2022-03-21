@@ -28,12 +28,13 @@
         <Grid Grid.ColumnSpan="2" Margin="0,0,0,117" Grid.RowSpan="2">
             <TextBox Text="CLIENT MANAGEMENT APP" FontSize="16" Margin="360,3,230,3" Width="Auto"></TextBox>
         </Grid>
-        <DataGrid Grid.Row="1" ItemsSource="{Binding ClientCollection}" 
+        <DataGrid Grid.Row="1" ItemsSource="{Binding ClientCollection,Mode=OneWay}" 
                   SelectedItem="{Binding SelectedClient,Mode=TwoWay}" Margin="0,21,0,9.667" Grid.ColumnSpan="2">
 
         </DataGrid>
 
-        <Grid Grid.Row="2" DataContext="{Binding SelectedClient}" Margin="0,0,0,0.667" Grid.ColumnSpan="2">
+         
+        <Grid Grid.Row="2"  Margin="0,0,0,0.667" Grid.ColumnSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
@@ -44,21 +45,19 @@
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-
             <TextBlock Grid.Row="0" Grid.Column="0" Text="First Name" Margin="3,4,65.333,1.667"></TextBlock>
             <TextBlock Grid.Row="0" Grid.Column="1" Text="Last Name"></TextBlock>
             <TextBlock Grid.Row="0" Grid.Column="1" Text="Birth Date" Margin="197.667,1,-10.667,4.667" Grid.ColumnSpan="3"></TextBlock>
 
-
-
-            <TextBox  x:Name="FirstName" Grid.Row="1"  Grid.Column="0"  Text="{Binding FirstName,  UpdateSourceTrigger=PropertyChanged}"  Margin="3,0.333,21.333,23.667"/>
-            <TextBox x:Name="LastName" Grid.Row="1" Grid.Column="1" Text="{Binding LastName}" Margin="0,2.333,10.333,21.667" Width="Auto" Grid.ColumnSpan="2"></TextBox>
-            <DatePicker Name="BirthDate" Grid.Row="1" Grid.Column="1" Text="{Binding BirthDate}" Margin="197.667,2.333,-59.667,21.667" Grid.ColumnSpan="3"/>
-
-
-
+            <TextBox  x:Name="FirstNameNew" Grid.Row="1"  Grid.Column="0"  Text="{Binding FirstName,  Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"  Margin="3,0.333,21.333,23.667"/>
+            <TextBox x:Name="LastNameNew" Grid.Row="1" Grid.Column="1" Text="{Binding LastName,  Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Margin="0,2.333,10.333,21.667" Width="Auto" Grid.ColumnSpan="2"></TextBox>
+            <DatePicker Name="BirthDateNew" Grid.Row="1" Grid.Column="1" Text="{Binding BirthDate,  Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Margin="197.667,2.333,-59.667,21.667" Grid.ColumnSpan="3" SelectedDate="2001-01-01"/>
+            
         </Grid>
+       
+
         <Grid DataContext="{Binding SelectedAddress}" Grid.ColumnSpan="2" Margin="0,0,0,117" Grid.RowSpan="2"/>
+       
         <StackPanel Grid.Row="2" Margin="0,250,242,249.667"  Orientation="Horizontal" HorizontalAlignment="Right">
             <Button Command="{Binding Xml}" Content="Add From XML"/>
             <Button Command="{Binding GetWorldClock}" Content="WorldClock"/>

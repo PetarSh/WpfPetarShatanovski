@@ -9,7 +9,9 @@
         mc:Ignorable="d"
         Title="CLIENTS MANAGEMENT PETAR" Height="450" Width="800">
     <Window.DataContext>
-        <vm:MainWindowViewModel></vm:MainWindowViewModel>
+        <vm:MainWindowViewModel>
+            
+        </vm:MainWindowViewModel>
     </Window.DataContext>
     <Grid>
         <View:ClientCollection></View:ClientCollection>

@@ -19,7 +19,8 @@ namespace WpfPetarShatanovski.Infrastructure
 
         public void OnProprtyChanged([CallerMemberName]string propertyName = null)
         {
-            PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            //PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
